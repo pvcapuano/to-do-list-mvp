@@ -19,5 +19,5 @@ export const Button = styled.button`
   width: 100px;
   height: 40px;
   margin-top: 20px;
-  margin-left: auto;
+  
 `
