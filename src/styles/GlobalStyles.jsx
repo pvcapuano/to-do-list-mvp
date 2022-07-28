@@ -9,5 +9,6 @@ export default createGlobalStyle`
 
     body{
         font-family: Roboto, Ubuntu, sans-serif;
+        background:#0D0D0D ;
     }
 `;
