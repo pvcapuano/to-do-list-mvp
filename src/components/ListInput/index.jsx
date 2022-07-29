@@ -1,4 +1,5 @@
 import React from "react";
+import ListItems from "../ListItems";
 import { Container, Wrapper, Input, Button } from "./styles";
 
 const ListInput = () => {
@@ -9,6 +10,8 @@ const ListInput = () => {
         <Input placeholder="Adicione uma nova tarefa" />
         <Button>Criar</Button>
       </Wrapper>
+
+      <ListItems />
     </Container>
   );
 };

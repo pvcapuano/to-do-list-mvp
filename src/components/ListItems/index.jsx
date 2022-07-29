@@ -1,7 +1,16 @@
 import React from "react";
+import { Container, ListItem, Wrapper, EditButton, DelButton } from "./styles";
 
 const ListItems = () => {
-  return <div>Lista dos items</div>;
+  return (
+    <Container>
+      <Wrapper>
+        <ListItem>Testando</ListItem>
+        <EditButton />
+        <DelButton />
+      </Wrapper>
+    </Container>
+  );
 };
 
 export default ListItems;
