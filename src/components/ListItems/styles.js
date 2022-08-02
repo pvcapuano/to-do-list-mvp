@@ -14,13 +14,21 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin-top: 30px;
 `;
 
 export const ListItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 30px;
+`;
+
+export const ListItemText = styled.p`
   color: #f2f2f2;
 `;
 
