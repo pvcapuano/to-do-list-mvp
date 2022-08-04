@@ -28,6 +28,14 @@ const ListInput = () => {
     setCurrentPost("");
   };
 
+  const delPost = (id) => {
+    const removeItem = posts.filter((post) => {
+      return post.id !== id;
+    });
+
+    setPosts(removeItem);
+  };
+
   return (
     <Container>
       <h1>O que deseja adicionar na lista?</h1>
@@ -41,7 +49,7 @@ const ListInput = () => {
         <Button onClick={addPost}>Criar</Button>
       </Wrapper>
 
-      <ListItems posts={posts} />
+      <ListItems posts={posts} delPost={delPost} />
     </Container>
   );
 };

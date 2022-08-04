@@ -8,7 +8,7 @@ import {
   DelButton,
 } from "./styles";
 
-const ListItems = ({ posts }) => {
+const ListItems = ({ posts, delPost }) => {
   return (
     <Container>
       <Wrapper>
@@ -16,7 +16,7 @@ const ListItems = ({ posts }) => {
           <ListItem key={post.id}>
             <ListItemText>{post.postText}</ListItemText>
             <EditButton />
-            <DelButton />
+            <DelButton onClick={() => delPost(post.id)} />
           </ListItem>
         ))}
       </Wrapper>
