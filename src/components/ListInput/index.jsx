@@ -5,9 +5,11 @@ import { v4 } from "uuid";
 import { localStoragePosts } from "../../utils/savedPosts";
 
 const ListInput = () => {
+  // states
   const [posts, setPosts] = useState(localStoragePosts());
-
-  const [currentPost, setCurrentPost] = useState("");
+  const [post, setPost] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentPost, setCurrentPost] = useState(null);
 
   useEffect(
     () => localStorage.setItem("posts", JSON.stringify(posts)),
@@ -15,17 +17,43 @@ const ListInput = () => {
   );
 
   let inputText = (e) => {
-    setCurrentPost(e.target.value);
+    setPost(e.target.value);
   };
 
   const addPost = () => {
-    let newPost = { id: v4(), postText: currentPost };
+    let newPost = { id: v4(), postText: post };
     let includePost = posts.concat(newPost);
 
-    if (currentPost === "") return posts;
+    if (post === "") return posts;
 
     setPosts(includePost);
-    setCurrentPost("");
+    setPost("");
+  };
+
+  const editInputPost = (e) => {
+    setCurrentPost({ ...currentPost, postText: e.target.value });
+  };
+
+  const handleEditPost = (post) => {
+    setIsEditing(true);
+
+    setCurrentPost(post);
+  };
+
+  const handleUpdatePost = (updatedPost) => {
+    const updatedItem = posts.map((post) => {
+      return post.id === updatedPost.id ? updatedPost : post;
+    });
+
+    setIsEditing(false);
+    setPosts(updatedItem);
+    setCurrentPost(null);
+  };
+
+  const handleEditSubmit = (e) => {
+    e.preventDefault();
+
+    handleUpdatePost(currentPost);
   };
 
   const delPost = (id) => {
@@ -38,18 +66,37 @@ const ListInput = () => {
 
   return (
     <Container>
-      <h1>O que deseja adicionar na lista?</h1>
-      <Wrapper>
-        <Input
-          placeholder="Adicione uma nova tarefa"
-          onChange={inputText}
-          value={currentPost}
-          type="text"
-        />
-        <Button onClick={addPost}>Criar</Button>
-      </Wrapper>
+      {isEditing ? (
+        <>
+          <h1>O que deseja editar?</h1>
+          <Wrapper onSubmit={handleEditSubmit}>
+            <Input
+              placeholder="Editar tarefa"
+              onChange={editInputPost}
+              value={currentPost.postText}
+              type="text"
+            />
+            <Button type="submit">Editar</Button>
+            <Button onClick={() => setIsEditing(false)}>Cancelar</Button>
+          </Wrapper>
+        </>
+      ) : (
+        <>
+          <h1>O que deseja adicionar na lista?</h1>
 
-      <ListItems posts={posts} delPost={delPost} />
+          <Wrapper onSubmit={addPost}>
+            <Input
+              placeholder="Adicione uma nova tarefa"
+              onChange={inputText}
+              value={post}
+              type="text"
+            />
+            <Button type="submit">Adicionar</Button>
+          </Wrapper>
+        </>
+      )}
+
+      <ListItems posts={posts} delPost={delPost} editPost={handleEditPost} />
     </Container>
   );
 };

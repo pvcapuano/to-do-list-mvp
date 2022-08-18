@@ -23,7 +23,7 @@ export const ListItem = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   margin-top: 30px;
 `;
