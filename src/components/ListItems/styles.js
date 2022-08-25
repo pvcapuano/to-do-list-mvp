@@ -34,8 +34,10 @@ export const ListItemText = styled.p`
 
 export const EditButton = styled(FaEdit)`
   color: #808080;
+  cursor: pointer;
 `;
 
 export const DelButton = styled(FaTrash)`
+  cursor: pointer;
   color: #808080;
 `;

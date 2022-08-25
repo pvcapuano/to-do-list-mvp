@@ -24,7 +24,10 @@ const ListInput = () => {
     let newPost = { id: v4(), postText: post };
     let includePost = posts.concat(newPost);
 
-    if (post === "") return posts;
+    if (post === "") {
+      alert("Digite alguma tarefa!");
+      return posts;
+    }
 
     setPosts(includePost);
     setPost("");
