@@ -1,13 +1,22 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
+  width: 60%;
   padding: 30px;
-  margin-top: 40px;
   background: #191919;
+  text-align: center;
+  margin: 30px auto;
 
   > h1 {
     color: #808080;
+  }
+
+  @media (max-width: 1024px) {
+    width: 80%;
+  }
+
+  @media (max-width: 425px) {
+    width: 100%;
   }
 `;
 
@@ -16,7 +25,7 @@ export const Wrapper = styled.form`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-top: 30px;
+  margin-top: 10px;
 `;
 
 export const Input = styled.input`
@@ -30,7 +39,14 @@ export const Input = styled.input`
     padding: 10px;
   }
 `;
-export const Button = styled.button`
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+export const ButtonSC = styled.button`
   background: #1e6f9f;
   border: none;
   color: #fff;

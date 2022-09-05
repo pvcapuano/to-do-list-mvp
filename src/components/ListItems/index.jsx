@@ -6,6 +6,8 @@ import {
   Wrapper,
   EditButton,
   DelButton,
+  ListButtons,
+  ListText,
 } from "./styles";
 
 const ListItems = ({ posts, delPost, editPost }) => {
@@ -14,9 +16,13 @@ const ListItems = ({ posts, delPost, editPost }) => {
       <Wrapper>
         {posts.map((post) => (
           <ListItem key={post.id}>
-            <ListItemText>{post.postText}</ListItemText>
-            <EditButton onClick={() => editPost(post)} />
-            <DelButton onClick={() => delPost(post.id)} />
+            <ListText>
+              <ListItemText>{post.postText}</ListItemText>
+            </ListText>
+            <ListButtons>
+              <EditButton onClick={() => editPost(post)} />
+              <DelButton onClick={() => delPost(post.id)} />
+            </ListButtons>
           </ListItem>
         ))}
       </Wrapper>

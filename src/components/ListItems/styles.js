@@ -2,9 +2,6 @@ import styled from "styled-components";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
 export const Container = styled.div`
-  width: 100%;
-  padding: 30px;
-  margin-top: 40px;
   background: #191919;
 
   > h1 {
@@ -12,20 +9,29 @@ export const Container = styled.div`
   }
 `;
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-`;
+export const Wrapper = styled.div``;
 
 export const ListItem = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  padding: 10px;
+`;
 
-  margin-top: 30px;
+export const ListText = styled.div`
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px;
+`;
+
+export const ListButtons = styled.div`
+  width: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 `;
 
 export const ListItemText = styled.p`
