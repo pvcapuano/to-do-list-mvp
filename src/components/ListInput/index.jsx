@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ListItems from "../ListItems";
-import { Container, Wrapper, Input, ButtonSC, ButtonWrapper } from "./styles";
+import {
+  Container,
+  Wrapper,
+  Input,
+  Button,
+  ButtonSC,
+  ButtonWrapper,
+  ButtonWrapper2,
+} from "./styles";
 import { v4 } from "uuid";
 import { localStoragePosts } from "../../utils/savedPosts";
 import Box from "@mui/material/Box";
@@ -13,8 +21,8 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 500,
-  bgcolor: "#191919",
-  border: "2px solid #000",
+  bgcolor: "#fff",
+  border: "2px solid #c9baba",
   boxShadow: 24,
   p: 4,
 };
@@ -109,24 +117,13 @@ const ListInput = () => {
                   value={currentPost.postText}
                   type="text"
                 />
-                <ButtonSC type="submit">Editar</ButtonSC>
-                <ButtonSC onClick={() => setIsEditing(false)}>
-                  Cancelar
-                </ButtonSC>
+                <ButtonWrapper2>
+                  <ButtonSC type="submit">Editar</ButtonSC>
+                  <ButtonSC type="submit">Cancelar</ButtonSC>
+                </ButtonWrapper2>
               </Wrapper>
             </Box>
           </Modal>
-
-          {/* <Wrapper onSubmit={handleEditSubmit}>
-            <Input
-              placeholder="Editar tarefa"
-              onChange={editInputPost}
-              value={currentPost.postText}
-              type="text"
-            />
-            <Button type="submit">Editar</Button>
-            <Button onClick={() => setIsEditing(false)}>Cancelar</Button>
-          </Wrapper> */}
         </>
       ) : (
         <>
@@ -157,7 +154,7 @@ const ListInput = () => {
 
       <ListItems posts={posts} delPost={delPost} editPost={handleEditPost} />
       <ButtonWrapper>
-        <ButtonSC onClick={handleOpen}>Adicionar</ButtonSC>
+        <Button onClick={handleOpen}>Nova Tarefa</Button>
       </ButtonWrapper>
     </Container>
   );

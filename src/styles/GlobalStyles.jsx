@@ -4,11 +4,12 @@ export default createGlobalStyle`
     *{
         margin: 0;
         padding: 0;
-        box-sizing: border-box;   
+        box-sizing: border-box;  
     }
 
     body{
         font-family: Roboto, Ubuntu, sans-serif;
-        background:#0D0D0D ;
+        background:#9462D3 ;
+        height : 100vh ;
     }
 `;

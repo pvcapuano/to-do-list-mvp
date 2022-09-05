@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
 export const Container = styled.div`
-  background: #191919;
+  background: #ffffff;
 
   > h1 {
     color: #808080;
@@ -35,7 +35,7 @@ export const ListButtons = styled.div`
 `;
 
 export const ListItemText = styled.p`
-  color: #f2f2f2;
+  color: #808080;
 `;
 
 export const EditButton = styled(FaEdit)`
