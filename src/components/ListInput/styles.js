@@ -34,9 +34,11 @@ export const Input = styled.input`
   margin-top: 20px;
   background: #808080;
   color: #fff;
+  padding: 10px;
 
   &::placeholder {
-    padding: 10px;
+    margin-left: 10px;
+    color: #fff;
   }
 `;
 
@@ -47,7 +49,7 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const ButtonWrapper2 = styled.div`
-  width: 90%;
+  width: 30%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;

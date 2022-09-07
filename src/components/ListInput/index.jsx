@@ -36,7 +36,10 @@ const ListInput = () => {
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = (setter, clearFunction) => {
+    setter(false);
+    if (typeof clearFunction === "function") clearFunction();
+  };
 
   useEffect(
     () => localStorage.setItem("posts", JSON.stringify(posts)),
@@ -96,61 +99,54 @@ const ListInput = () => {
 
   return (
     <Container>
-      {isEditing ? (
-        <>
-          <h1>O que deseja editar?</h1>
+      <h1>Lista de Tarefas</h1>
 
-          <Modal
-            open={setOpen}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <Typography style={{ color: "#808080" }}>
-                O que deseja editar?
-              </Typography>
-              <Wrapper onSubmit={handleEditSubmit}>
-                <Input
-                  placeholder="Editar tarefa"
-                  onChange={editInputPost}
-                  value={currentPost.postText}
-                  type="text"
-                />
-                <ButtonWrapper2>
-                  <ButtonSC type="submit">Editar</ButtonSC>
-                  <ButtonSC type="submit">Cancelar</ButtonSC>
-                </ButtonWrapper2>
-              </Wrapper>
-            </Box>
-          </Modal>
-        </>
-      ) : (
-        <>
-          <h1>Lista de Tarefas</h1>
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <Typography style={{ color: "#808080" }}>
-                O que deseja adicionar na lista?
-              </Typography>
-              <Wrapper onSubmit={addPost}>
-                <Input
-                  placeholder="Adicione uma nova tarefa"
-                  onChange={inputText}
-                  value={post}
-                  type="text"
-                />
-                <ButtonSC type="submit">Add</ButtonSC>
-              </Wrapper>
-            </Box>
-          </Modal>
-        </>
-      )}
+      <Modal
+        open={isEditing}
+        onClose={() => handleClose(setIsEditing(false))}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography style={{ color: "#808080" }}>
+            O que deseja editar?
+          </Typography>
+          <Wrapper onSubmit={handleEditSubmit}>
+            <Input
+              placeholder="Editar tarefa"
+              onChange={editInputPost}
+              value={currentPost?.postText}
+              type="text"
+              style={{ padding: "10px" }}
+            />
+            <ButtonWrapper2>
+              <ButtonSC type="submit">Salvar</ButtonSC>
+            </ButtonWrapper2>
+          </Wrapper>
+        </Box>
+      </Modal>
+
+      <Modal
+        open={open}
+        onClose={() => handleClose(setOpen, setPost)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography style={{ color: "#808080" }}>
+            O que deseja adicionar na lista?
+          </Typography>
+          <Wrapper onSubmit={addPost}>
+            <Input
+              placeholder="Adicione uma nova tarefa"
+              onChange={inputText}
+              value={post}
+              type="text"
+            />
+            <ButtonSC type="submit">Adicionar</ButtonSC>
+          </Wrapper>
+        </Box>
+      </Modal>
 
       <ListItems posts={posts} delPost={delPost} editPost={handleEditPost} />
       <ButtonWrapper>
