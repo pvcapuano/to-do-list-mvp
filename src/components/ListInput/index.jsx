@@ -103,7 +103,7 @@ const ListInput = () => {
 
       <Modal
         open={isEditing}
-        onClose={() => handleClose(setIsEditing(false))}
+        onClose={() => handleClose(setIsEditing)}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
