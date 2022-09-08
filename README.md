@@ -52,4 +52,5 @@ Melhorar a lógica e desenvolver conforme a demanda solicitada pelo cliente.
 
 * O projeto foi separado em 2 componentes: ListItems e ListInput. 
 * Foi abstraido um arquivo separado, uma função que pega as informações salvas no localStorage.
+* O useEffect renderiza as informações salvas no localStorage.
  
